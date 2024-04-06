@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,4 +36,21 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
+
+    public void PauseGame(bool value)
+    {
+        if (value)
+        {
+            Time.timeScale = 0;
+            player.GetComponent<PlayerInput>().enabled = false;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            player.GetComponent<PlayerInput>().enabled = true;
+        }
+       
+    }
+
 }

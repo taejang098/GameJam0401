@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,12 @@ public class Player : Entity
     public int level;           // 레벨
     public float exp_Amount;    // 경험치 획득량
 
+    public Action LevelUpEvent;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        LevelUpEvent += Level_Up;
     }
 
     private void FixedUpdate()
@@ -66,6 +70,7 @@ public class Player : Entity
     public override void Die()
     {
         base.Die();
+        GameManager.Instance.PauseGame(true);
     }
 
     // 경험치 획득 함수
@@ -75,7 +80,7 @@ public class Player : Entity
     }
 
     // 레벨 업 함수
-    public void Level_Up()
+    private void Level_Up()
     {
         Debug.Log("레벨 업!");
         level++;
