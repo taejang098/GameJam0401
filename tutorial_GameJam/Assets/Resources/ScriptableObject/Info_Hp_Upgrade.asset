@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Info_Hp_Upgrade
   m_EditorClassIdentifier: 
   icon: {fileID: -344242777, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  nameStr: "\uCCB4\uB825 \uC99D\uAC00"
-  infoStr: "\uCCB4\uB825 \uC99D\uAC00"
+  nameStr: "\uCCB4\uB825"
+  infoStr: "\uCCB4\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."

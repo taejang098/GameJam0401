@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Info_Atk_Upgrade
   m_EditorClassIdentifier: 
   icon: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  nameStr: "\uACF5\uACA9\uB825 \uC99D\uAC00"
-  infoStr: "\uACF5\uACA9\uB825 \uC99D\uAC00"
+  nameStr: "\uACF5\uACA9\uB825 "
+  infoStr: "\uACF5\uACA9\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."

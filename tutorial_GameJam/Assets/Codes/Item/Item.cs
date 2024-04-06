@@ -8,6 +8,8 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SoundManager.Instance.Play(Define.AudioType.Sfx, "Sfx_GetItem");
+
             // 오브젝트 비활성화 
             gameObject.SetActive(false);
             UseItem();

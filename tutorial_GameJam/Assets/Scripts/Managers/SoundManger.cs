@@ -5,52 +5,55 @@ using UnityEngine;
 public class SoundManager : Singleton<SoundManager>
 {
 
-
-	private Transform _soundManager;
 	private AudioSource _bgmSource;
 	private Transform _sfxSources;
 
 	private Dictionary<string, AudioClip> _bgmClips = new Dictionary<string, AudioClip>();
 	private Dictionary<string, AudioClip> _sfxClips = new Dictionary<string, AudioClip>();
-	public void Init()
+	private void Start()
 	{
-		foreach (AudioClip s in ResourceManager.LoadAll<AudioClip>("Sound/Bgm"))
-		{
-			_bgmClips.Add(s.name, s);
-		}
+		var bgmList = ResourceManager.LoadAll<AudioClip>("Sound/Bgm");
+		var sfxList = ResourceManager.LoadAll<AudioClip>("Sound/Sfx");
 
-		foreach (AudioClip s in ResourceManager.LoadAll<AudioClip>("Sound/Sfx"))
-		{
-			//print(s.name);
-			_sfxClips.Add(s.name, s);
-		}
-
-		if (_soundManager == null)//매니저 자식으로 사운드 매니저가 없을 때
-		{
-			_soundManager = new GameObject("SoundManger_Singleton").transform;
-
-			_bgmSource = new GameObject("BgmSource").AddComponent<AudioSource>();
-			_bgmSource.loop = true;
-			_bgmSource.volume = 0.5f;
-
-			_sfxSources = new GameObject("SfxSources").transform;
-
-			_bgmSource.transform.SetParent(_soundManager);
-			_sfxSources.SetParent(_soundManager);
-
-
-
-			for (int i = 0; i < 5; i++)//sfxSource 자식으로 5개만들기
+		if (bgmList != null)
+        {
+			foreach (AudioClip s in bgmList)
 			{
-				GameObject temp = new GameObject("sfxSource" + (i + 1));
-				temp.AddComponent<AudioSource>();
-				temp.transform.SetParent(_sfxSources);
-				temp.GetComponent<AudioSource>().volume = 0.5f;
+				_bgmClips.Add(s.name, s);
 			}
 		}
-	}
 
-	public void Clear()
+		if (sfxList != null)
+		{
+			foreach (AudioClip s in sfxList)
+			{
+				_sfxClips.Add(s.name, s);
+			}
+		}
+
+
+        _bgmSource = new GameObject("BgmSource").AddComponent<AudioSource>();
+        _bgmSource.loop = true;
+        _bgmSource.volume = 0.5f;
+
+        _sfxSources = new GameObject("SfxSources").transform;
+
+        _bgmSource.transform.SetParent(transform);
+        _sfxSources.SetParent(transform);
+
+
+
+        for (int i = 0; i < 5; i++)//sfxSource 자식으로 5개만들기
+        {
+            GameObject temp = new GameObject("sfxSource" + (i + 1));
+            temp.AddComponent<AudioSource>();
+            temp.transform.SetParent(_sfxSources);
+            temp.GetComponent<AudioSource>().volume = 0.5f;
+        }
+
+    }
+
+    public void Clear()
 	{
 		// 재생기 전부 재생 스탑, 음반 빼기
 

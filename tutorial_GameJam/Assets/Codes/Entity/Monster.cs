@@ -21,9 +21,12 @@ public class Monster : Entity
     // 사망 함수
     public override void Die()
     {
-        base.Die();
+        SoundManager.Instance.Play(Define.AudioType.Sfx, "Sfx_MonsterDie");
 
+        base.Die();
+        
         DropItem();
+        
     }
 
     // 플레이어와 닿을 시 공격

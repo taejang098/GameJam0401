@@ -39,6 +39,7 @@ public class Player : Entity
     // 공격 입력 함수
     void OnFire(InputValue value)
     {
+        SoundManager.Instance.Play(Define.AudioType.Sfx, "Sfx_Shot");
         Attack();
     }
 
@@ -82,7 +83,9 @@ public class Player : Entity
     // 레벨 업 함수
     private void Level_Up()
     {
+        SoundManager.Instance.Play(Define.AudioType.Sfx, "Sfx_Open");
         Debug.Log("레벨 업!");
         level++;
+        
     }
 }
