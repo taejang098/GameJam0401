@@ -4,39 +4,42 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private static GameManager instance = null;
-
+    [Header("게임 오브젝트")]
     public Player player;
     public ObjectPool object_Pool;
+    public SkillManager skill_Manager;
+    public UIManager ui_Manager;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public static GameManager Instance
+    [Header("게임 시스템")]
+    private int stage;
+    public int Stage
     {
         get
         {
-            if (instance == null)
-            {
-                return null;
-            }
-            return instance;
+            return stage;
+        }
+        set
+        {
+            stage = value;
         }
     }
 
+    private float timer;
+    [Header("스테이지 바뀌는 시간(s)")]
+    public float[] next_Stage_Time;
+
+    private void Update()
+    {
+        // 스테이지(난이도) 변경 시스템
+        timer += Time.deltaTime;
+        if (timer > next_Stage_Time[Mathf.Min(Stage, next_Stage_Time.Length)])
+        {
+            stage++;
+            timer = 0;
+        }
+    }
 
     public void PauseGame(bool value)
     {

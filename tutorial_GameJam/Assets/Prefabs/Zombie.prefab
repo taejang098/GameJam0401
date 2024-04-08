@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -493647738, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de001ebe6d480654482f8d4aa091a376, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024339199, y: 0}
-  m_Size: {x: 0.7426996, y: 1}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.25, y: 1.25}
   m_Direction: 0
 --- !u!50 &5909916761927725718
 Rigidbody2D:
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978f3f3ae4e2c57409a6a4c51a441245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_Health: 100
-  speed: 1
-  attack_Damage: 10
+  max_Health: 0
+  speed: 0
+  hitable_Time: 0
+  attack_Damage: 0

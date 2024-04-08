@@ -1026,6 +1026,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1144662033}
+  - {fileID: 530050682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &522826312
@@ -1075,6 +1076,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn_Points: []
+  monster_Datas:
+  - sprite: {fileID: 21300000, guid: e1cd59e5168c8ac4da74c880a5faf882, type: 3}
+    health: 50
+    damage: 5
+    speed: 1
+    spawn_Time: 1
+  - sprite: {fileID: 21300000, guid: b1a85844c5e53734c937e84b8c72a7ba, type: 3}
+    health: 100
+    damage: 10
+    speed: 1.5
+    spawn_Time: 0.7
+  - sprite: {fileID: 21300000, guid: de001ebe6d480654482f8d4aa091a376, type: 3}
+    health: 150
+    damage: 20
+    speed: 2
+    spawn_Time: 0.3
 --- !u!4 &530050682
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,7 +1101,7 @@ Transform:
   m_GameObject: {fileID: 530050680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1112,7 +1129,7 @@ Transform:
   - {fileID: 1530236402}
   - {fileID: 233206464}
   - {fileID: 937782556}
-  m_Father: {fileID: 1414483341}
+  m_Father: {fileID: 522826311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591295714
 GameObject:
@@ -1818,7 +1835,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 2093186594, guid: 9ee30eb7d2f1f404790266ee96a67099, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2798,6 +2815,7 @@ GameObject:
   - component: {fileID: 1414483344}
   - component: {fileID: 1414483345}
   - component: {fileID: 1414483343}
+  - component: {fileID: 1414483346}
   - component: {fileID: 1414483342}
   m_Layer: 0
   m_Name: Player
@@ -2847,7 +2865,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 978012912, guid: 99a24620d31e5ce4e823c32d11e17c2c, type: 3}
+  m_Sprite: {fileID: 2069022709, guid: 4d71350a0e916ea42bddcebb14dc1138, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2870,8 +2888,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 530050682}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1414483342
@@ -2888,11 +2905,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_Health: 100
   speed: 3
-  inputVec: {x: 0, y: 0}
+  hitable_Time: 0
   attack_Damage: 50
   bullet_Speed: 10
-  level: 0
-  exp_Amount: 0
+  current_Exp_Amount: 0
+  init_Exp_Amount_To_Level_Up: 50
+  exp_Amount_increase_Value: 1.1
 --- !u!114 &1414483343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2982,9 +3000,30 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0035032034, y: 0}
-  m_Size: {x: 0.75476766, y: 1.1111112}
+  m_Offset: {x: 0.0035032034, y: -0.049441934}
+  m_Size: {x: 0.9, y: 1.371805}
   m_Direction: 0
+--- !u!95 &1414483346
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414483339}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4c01721b834c9a4fb46fbb046fc6292, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1499326584
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,7 +3300,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.381
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -3442,6 +3481,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 530050682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1653788837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1653788839}
+  - component: {fileID: 1653788838}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1653788838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653788837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0284d18fe6dba034484dc96e14df3cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp_Slider: {fileID: 1588822063}
+--- !u!4 &1653788839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653788837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 768.5585, y: 507.1649, z: 3.2107382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664032580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,6 +3657,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1414483342}
   object_Pool: {fileID: 109960160}
+  skill_Manager: {fileID: 317755782}
+  ui_Manager: {fileID: 1653788838}
+  next_Stage_Time:
+  - 10
+  - 20
+  - 30
 --- !u!4 &1729861338
 Transform:
   m_ObjectHideFlags: 0
@@ -4591,6 +4681,7 @@ SceneRoots:
   - {fileID: 1729861338}
   - {fileID: 109960161}
   - {fileID: 317755783}
+  - {fileID: 1653788839}
   - {fileID: 154952767}
   - {fileID: 1309101007}
   - {fileID: 1092083361}

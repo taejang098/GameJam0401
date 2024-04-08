@@ -30,12 +30,12 @@ public class SkillManager : MonoBehaviour
         GameManager.Instance.player.LevelUpEvent += ShowSkill; //레벨업 이벤트 
 
         //[테스트용] 엔터키 누르면 스킬 선택 패널 활성화
-        InputManager.Instance.AddKeyDownEvent(KeyCode.Return, () => { GameManager.Instance.player.LevelUpEvent(); });
+        //InputManager.Instance.AddKeyDownEvent(KeyCode.Return, () => { GameManager.Instance.player.LevelUpEvent(); });
         
     }
 
 
-    private void ShowSkill() //스킬 버튼 생성 메서드
+    public void ShowSkill() //스킬 버튼 생성 메서드
     {
 
         if(_skillTypeList.Count == 0)
