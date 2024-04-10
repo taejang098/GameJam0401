@@ -4,41 +4,46 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using DG.Tweening;
 public class SettingsPopup : MonoBehaviour
 {
     public Slider bgmSlider;
     public Slider sfxSlider;
 
-    public Button closeBtn;
-
-    public TextMeshProUGUI bgmValueText;
-    public TextMeshProUGUI sfxValueText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI infoText;
 
     private void Start()
     {
-        closeBtn.onClick.AddListener(() => 
-        {
-            transform.parent.GetComponent<CanvasGroup>().ChangePopup(false);
-            GameManager.Instance.PauseGame(false);
-        });
+        
 
-        bgmSlider.value = 0.5f;
-        sfxSlider.value = 0.5f;
+        bgmSlider.value = SoundManager.Instance.GetVolume(Define.AudioType.Bgm);
+        sfxSlider.value = SoundManager.Instance.GetVolume(Define.AudioType.Sfx);
 
-        bgmValueText.text = "50";
-        sfxValueText.text = "50";
-
+  
         //ScrollBar
         bgmSlider.onValueChanged.AddListener((value) =>
         {
             SoundManager.Instance.SetVolume(Define.AudioType.Bgm, value);
-            bgmValueText.text = (bgmSlider.value * 100).ToString("N0");
-
+     
         });
         sfxSlider.onValueChanged.AddListener((value) =>
         {
             SoundManager.Instance.SetVolume(Define.AudioType.Sfx, value);
-            sfxValueText.text = (sfxSlider.value * 100).ToString("N0");
         });
+
+        ShowInfo();
+
+       
+    }
+
+    private void ShowInfo()
+    {
+        levelText.text = "Lv."+GameManager.Instance.player.Level;
+        infoText.text = "체력 : Lv." + GameManager.Instance.upgradeLevels[0] + System.Environment.NewLine + System.Environment.NewLine +
+                        "공격력 : Lv." + GameManager.Instance.upgradeLevels[1] + System.Environment.NewLine + System.Environment.NewLine +
+                        "공격 속도 : Lv." + GameManager.Instance.upgradeLevels[2] + System.Environment.NewLine + System.Environment.NewLine +
+                        "이동 속도 : Lv." + GameManager.Instance.upgradeLevels[3];
+
     }
 }

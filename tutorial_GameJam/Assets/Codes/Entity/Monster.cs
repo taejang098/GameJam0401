@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Monster : Entity
 {
+
     [Header("공격력")]
     public float attack_Damage;
-
-    private Rigidbody2D rb;
     private SpriteRenderer sr;
+    public float Health { get { return health; }}
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     // 피격 함수
@@ -30,41 +29,51 @@ public class Monster : Entity
         base.Die();
         
         DropItem();
-        
+
+        GameManager.Instance.killCount++;
     }
 
     // 플레이어와 닿을 시 공격
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(attack_Damage);
+            collision.gameObject.GetComponent<Player>().Knockback(gameObject, speed*2);
         }
     }
-
+ 
     private void FixedUpdate()
     {
-        FollowPlayer();
+       
+
+            FollowPlayer();
     }
 
     private void LateUpdate()
     {
-        sr.flipX = GameManager.Instance.player.transform.position.x > rb.position.x;
+        sr.flipX = GameManager.Instance.player.transform.position.x > transform.position.x;
     }
 
     // 플레이어를 쫓아가는 함수
     public void FollowPlayer()
     {
-        Vector2 dir = GameManager.Instance.player.transform.position - rb.transform.position;
-        Vector2 nextVec = dir.normalized * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + nextVec);
+         Vector2 dir = GameManager.Instance.player.transform.position - transform.position;
+         Vector2 nextVec = dir.normalized * speed * Time.deltaTime;
+         transform.Translate(nextVec);
+
+        /*_agent.SetDestination(GameManager.Instance.player.transform.position);*/
     }
 
     // 아이템 드롭 함수
     public void DropItem()
     {
-        GameObject exp = GameManager.Instance.object_Pool.Get(1);
-        exp.transform.position = rb.transform.position;
+        
+
+        GameObject exp = GameManager.Instance.object_Pool.GetItem(0);
+        exp.transform.position = transform.position;
+
     }
 
     private void OnEnable()
@@ -73,13 +82,15 @@ public class Monster : Entity
         timer = 0f;
     }
 
+
+ 
     // 데이터 초기화 설정
-    public void Init(MonsterData data)
+  /*  public void Init(MonsterData data)
     {
         sr.sprite = data.sprite;
         attack_Damage = data.damage;
         speed = data.speed;
         max_Health = data.health;
         health = data.health;
-    }
+    }*/
 }

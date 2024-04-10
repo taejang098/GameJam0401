@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public GameObject[] prefabs;
+    public GameObject[] itemPrefabs;
+    public GameObject[] monsterPrefabs;
 
-    List<GameObject>[] pools;
+    List<GameObject>[] itemPools;
+    List<GameObject>[] monsterPools;
 
     private void Awake()
     {
-        pools = new List<GameObject>[prefabs.Length];
+        itemPools = new List<GameObject>[itemPrefabs.Length];
 
-        for (int i = 0;  i < pools.Length; i++)
+        for (int i = 0;  i < itemPools.Length; i++)
         {
-            pools[i] = new List<GameObject>();
+            itemPools[i] = new List<GameObject>();
+        }
+
+        monsterPools = new List<GameObject>[monsterPrefabs.Length];
+
+        for (int i = 0; i < monsterPools.Length; i++)
+        {
+            monsterPools[i] = new List<GameObject>();
         }
     }
 
-    public GameObject Get(int index)
+    public GameObject GetItem(int index)
     {
         GameObject select = null;
 
-        foreach (GameObject item in pools[index])
+        foreach (GameObject item in itemPools[index])
         {
             if (!item.activeSelf)
             {
@@ -34,8 +43,31 @@ public class ObjectPool : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(prefabs[index], transform);
-            pools[index].Add(select);
+            select = Instantiate(itemPrefabs[index], transform);
+            itemPools[index].Add(select);
+        }
+
+        return select;
+    }
+
+    public GameObject GetMonster(int index)
+    {
+        GameObject select = null;
+
+        foreach (GameObject item in monsterPools[index])
+        {
+            if (!item.activeSelf)
+            {
+                select = item;
+                item.SetActive(true);
+                break;
+            }
+        }
+
+        if (!select)
+        {
+            select = Instantiate(monsterPrefabs[index], transform);
+            monsterPools[index].Add(select);
         }
 
         return select;

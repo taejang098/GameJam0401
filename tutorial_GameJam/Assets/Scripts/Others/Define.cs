@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Define 
 {
-    public enum SKILLTYPE
+    public enum MonsterType
     {
-        Hp_Upgrade, Speed_Upgrade, Atk_Upgrade, AtkSpeed_Upgrade
+        Yakgwa, Strawberry, Imomochi, Hoppang, Jugsun, Tanghulu
+    }
+    public enum PopupType
+    {
+        MainSetting_Popup, Setting_Popup, Upgrade_Popup, FinishGame_Popup
     }
 
     public enum AudioType { Bgm, Sfx };

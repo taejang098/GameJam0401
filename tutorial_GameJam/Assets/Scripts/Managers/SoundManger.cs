@@ -111,6 +111,27 @@ public class SoundManager : Singleton<SoundManager>
 
 	}
 
+	public float GetVolume(Define.AudioType type)
+	{
+		if (type == Define.AudioType.Bgm)
+		{
+			if (_bgmSource == null)
+				return -1;
+
+			return _bgmSource.volume;
+
+		}
+		else
+		{
+			if (_sfxSources == null)
+				return -1;
+
+			return _sfxSources.GetChild(0).GetComponent<AudioSource>().volume;
+
+		}
+
+	}
+
 	public void SetVolume(Define.AudioType type, float volume = 1.0f)
 	{
 		if (type == Define.AudioType.Bgm)
@@ -133,6 +154,7 @@ public class SoundManager : Singleton<SoundManager>
 		}
 
 	}
+
 	public bool GetMute(Define.AudioType type)
 	{
 		if (type == Define.AudioType.Bgm)

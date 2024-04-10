@@ -5,20 +5,34 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [Header("최대 체력")]
-    public float max_Health;
+    [SerializeField] protected float max_Health;
     protected float health;
     [Header("이동 속도")]
     public float speed;
     protected float timer;
     [Header("무적 시간")]
     public float hitable_Time;
+   
 
-    public void Start()
+    public float Max_Health
+    {
+        get
+        {
+            return max_Health;
+        }
+        set
+        {
+            float last = max_Health;
+            max_Health = value;
+            health *= (max_Health / last);
+        }
+    }
+    private void Start()
     {
         health = max_Health;
     }
 
-    public void Update()
+    private void Update()
     {
         timer += Time.deltaTime;
     }
@@ -37,8 +51,10 @@ public class Entity : MonoBehaviour
         if (health <= 0)
         {
             Die();
+
         }
     }
+  
 
     // 사망 함수
     public virtual void Die()

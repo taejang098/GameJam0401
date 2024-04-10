@@ -4,12 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+
+    public static GameManager Instance;
+
     [Header("게임 오브젝트")]
     public Player player;
     public ObjectPool object_Pool;
-    public SkillManager skill_Manager;
     public UIManager ui_Manager;
 
     [Header("게임 시스템")]
@@ -29,10 +31,33 @@ public class GameManager : Singleton<GameManager>
     private float timer;
     [Header("스테이지 바뀌는 시간(s)")]
     public float[] next_Stage_Time;
+    [Header("업그레이드 레벨(Hp, Atk, AtkSpeed, speed)")]
+    public List<int> upgradeLevels = new List<int>() {1,1,1,1};
+    [Header("업그레이드 증가량(Hp, Atk, AtkSpeed, speed)")]
+    public List<float> upgradeValues = new List<float>() {1,1,1,1};
+
+
+    public float gameTime = 15 * 60;
+    public int killCount = 0;
+
+    public bool isGameOver = false;
+    public bool isGameClear = false;
+    private void Awake()
+    {
+        Instance = this;
+        //DontDestroyOnLoad(gameObject);
+    }
 
     private void Update()
     {
         // 스테이지(난이도) 변경 시스템
+        int index = Mathf.Min(Stage, next_Stage_Time.Length);
+
+        if (next_Stage_Time.Length <= index)
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
         if (timer > next_Stage_Time[Mathf.Min(Stage, next_Stage_Time.Length)])
         {
@@ -56,4 +81,8 @@ public class GameManager : Singleton<GameManager>
        
     }
 
+    public GameObject GetMonster(Define.MonsterType type)
+    {
+        return object_Pool.GetMonster((int)type);
+    }
 }

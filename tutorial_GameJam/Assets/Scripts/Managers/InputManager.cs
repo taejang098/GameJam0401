@@ -22,6 +22,10 @@ public class InputManager : Singleton<InputManager>
 
     public void AddKeyDownEvent(KeyCode keyCode, Action inputEvent)
     {
+        if(_keyDownEvent.ContainsKey(keyCode))
+        {
+            return;
+        }
         _keyDownEvent.Add(keyCode, inputEvent);
     }
 }
