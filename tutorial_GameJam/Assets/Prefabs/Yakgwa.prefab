@@ -74,8 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247cca9879a90054c80a38166de6e323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_Health: 30
-  speed: 0.3
+  max_Health: 50
+  speed: 1.4
   hitable_Time: 0
   attack_Damage: 5
   sprites:

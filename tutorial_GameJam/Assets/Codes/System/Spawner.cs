@@ -42,6 +42,7 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
+       
         GameObject monster = GameManager.Instance.GetMonster(monster_Datas[GameManager.Instance.Stage].type);
         monster.transform.position = spawn_Points[UnityEngine.Random.Range(1, spawn_Points.Length)].position;
         //monster.GetComponent<Monster>().Init(monster_Datas[GameManager.Instance.Stage]);

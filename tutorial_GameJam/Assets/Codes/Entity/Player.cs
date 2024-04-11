@@ -244,7 +244,7 @@ public class Player : Entity
 
         base.TakeDamage(damage);
 
-        hpbar.fillAmount = health / max_Health;
+        ShowHpbar();
 
         if (health > 0)
         {
@@ -252,12 +252,17 @@ public class Player : Entity
         }
     }
 
+    public void ShowHpbar()
+    {
+        hpbar.fillAmount = health / max_Health;
+    }
+
     public void Knockback(GameObject obj, float knockbackForce)
     {
 
         Vector2 direction = (transform.position - obj.transform.position).normalized; // 충돌 대상과의 방향
         // 넉백 효과 적용
-        transform.DOMove((Vector2)transform.position + direction * knockbackForce, 0.2f);
+        transform.DOMove((Vector2)transform.position + direction, 0.2f);
 
     }
 

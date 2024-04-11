@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9218511917147324736}
-  - component: {fileID: 5909916761927725718}
   - component: {fileID: -5556398654187630294}
+  - component: {fileID: 5909916761927725718}
   - component: {fileID: 6716946232212827977}
   - component: {fileID: -3288796944908278328}
   m_Layer: 0
@@ -36,6 +36,22 @@ Transform:
   - {fileID: 3117713067654487316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5556398654187630294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351421185857502799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b441f5198afc3e74d9d1ab7d19497fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_Health: 30
+  speed: 1.2
+  hitable_Time: 0
+  attack_Damage: 5
 --- !u!50 &5909916761927725718
 Rigidbody2D:
   serializedVersion: 4
@@ -63,22 +79,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-5556398654187630294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2351421185857502799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b441f5198afc3e74d9d1ab7d19497fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_Health: 20
-  speed: 0.3
-  hitable_Time: 0
-  attack_Damage: 5
 --- !u!95 &6716946232212827977
 Animator:
   serializedVersion: 5

@@ -11,6 +11,7 @@ public class PopupManager : Singleton<PopupManager>
     private bool _isPause;
     public void Open(Define.PopupType type, bool isPause)
     {
+
         GameObject popup = ResourceManager.CreatePrefab<GameObject>($"Popup/{type}");
         popup.transform.SetParent(GameObject.Find("MainCanvas").transform);
         popup.transform.localPosition = Vector2.zero;

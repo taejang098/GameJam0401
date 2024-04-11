@@ -16,4 +16,11 @@ public class Exp : Item
     {
         GameManager.Instance.player.Get_Exp(get_Exp_Amount);
     }
+
+    private IEnumerator destroy()
+    {
+        yield return new WaitForSeconds(60);
+
+        gameObject.SetActive(false);
+    }
 }

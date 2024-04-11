@@ -6,19 +6,16 @@ public class Tanghulu : Monster
 {
     public List<Sprite> sprites = new List<Sprite>();
 
-    private int _hitCount;
+    private void Start()
+    {
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Count)];
+    }
 
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
-        if (_hitCount < sprites.Count - 1)
-        {
-            _hitCount++;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[_hitCount];
-        }
-
-        
+    
     }
 
 }

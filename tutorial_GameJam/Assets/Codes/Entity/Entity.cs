@@ -21,12 +21,12 @@ public class Entity : MonoBehaviour
             return max_Health;
         }
         set
-        {
-            float last = max_Health;
+        {           
             max_Health = value;
-            health *= (max_Health / last);
+            health = max_Health;
         }
     }
+
     private void Start()
     {
         health = max_Health;
@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
          // ¹«Àû½Ã°£ÀÌ ¾Æ´Ò ¶§
          if (timer >= hitable_Time)
          {
-            Debug.Log($"ÇÇ°Ý!{damage} ¸¸Å­ ´â¾Ò´Ù.");
+            //Debug.Log($"ÇÇ°Ý!{damage} ¸¸Å­ ´â¾Ò´Ù.");
             health -= damage;
             timer = 0f;
          }
@@ -59,7 +59,7 @@ public class Entity : MonoBehaviour
     // »ç¸Á ÇÔ¼ö
     public virtual void Die()
     {
-        Debug.Log("»ç¸Á!");
+        //Debug.Log("»ç¸Á!");
         gameObject.SetActive(false);
     }
 }

@@ -25,6 +25,32 @@ public class ObjectPool : MonoBehaviour
         {
             monsterPools[i] = new List<GameObject>();
         }
+
+      
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < itemPrefabs.Length; i++)
+        {
+            for (int j = 0; j < 30; j++)
+            {
+                GameObject temp = Instantiate(itemPrefabs[i], transform);
+                itemPools[i].Add(temp);
+                temp.SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < monsterPrefabs.Length; i++)
+        {
+            for (int j = 0; j < 30; j++)
+            {
+                GameObject temp = Instantiate(monsterPrefabs[i], transform);
+                monsterPools[i].Add(temp);
+                temp.SetActive(false);
+            }
+        }
+
     }
 
     public GameObject GetItem(int index)

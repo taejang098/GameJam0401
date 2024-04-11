@@ -156,12 +156,12 @@ MonoBehaviour:
   - {fileID: 8658609464352160732, guid: 96720e1a968f08642ae72c88bb470967, type: 3}
   - {fileID: 8260362488717772862, guid: 2214df7215ec2084c95441a7c290f38f, type: 3}
   monsterPrefabs:
-  - {fileID: 2351421185857502799, guid: 135eb0a4141aee94f84bb5b05d9f5672, type: 3}
-  - {fileID: 2351421185857502799, guid: fa6a55bf13318ca4db10c1db668830e0, type: 3}
   - {fileID: 2351421185857502799, guid: b13bd45f80123ca49a9a97fcedc29599, type: 3}
+  - {fileID: 2351421185857502799, guid: fa6a55bf13318ca4db10c1db668830e0, type: 3}
+  - {fileID: 2351421185857502799, guid: 135eb0a4141aee94f84bb5b05d9f5672, type: 3}
   - {fileID: 2351421185857502799, guid: 551fe2a3ee929b64981c5e13be1f1651, type: 3}
-  - {fileID: 2351421185857502799, guid: 1da16a52df7ce7b4a9198e715603d3c3, type: 3}
   - {fileID: 2351421185857502799, guid: ddd15154cac04df43a902aa6b579bf20, type: 3}
+  - {fileID: 2351421185857502799, guid: 1da16a52df7ce7b4a9198e715603d3c3, type: 3}
 --- !u!4 &109960161
 Transform:
   m_ObjectHideFlags: 0
@@ -5755,16 +5755,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn_Points: []
   monster_Datas:
-  - type: 0
-    spawn_Time: 1
   - type: 1
-    spawn_Time: 0.7
-  - type: 2
-    spawn_Time: 0.3
-  - type: 3
-    spawn_Time: 0.3
-  - type: 4
+    spawn_Time: 1
+  - type: 0
     spawn_Time: 0.5
+  - type: 2
+    spawn_Time: 0.5
+  - type: 3
+    spawn_Time: 1
+  - type: 4
+    spawn_Time: 1
   - type: 5
     spawn_Time: 0.5
 --- !u!4 &530050682
@@ -11671,7 +11671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634a3c65d7272cf4aad3d3c6904b3810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_Health: 50
+  max_Health: 60
   speed: 2
   hitable_Time: 0
   attack_Damage: 10
@@ -11679,7 +11679,7 @@ MonoBehaviour:
   bullet_Speed: 10
   current_Exp_Amount: 0
   init_Exp_Amount_To_Level_Up: 50
-  exp_Amount_increase_Value: 1.1
+  exp_Amount_increase_Value: 1.4
   hpbar: {fileID: 175173309}
   particleR: {fileID: 134821134}
   particleL: {fileID: 539254778}
@@ -11849,7 +11849,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.05, y: 0}
-  m_Size: {x: 0.4, y: 1}
+  m_Size: {x: 0.4, y: 0.7}
   m_Direction: 0
 --- !u!95 &1414483346
 Animator:
@@ -12252,19 +12252,19 @@ MonoBehaviour:
   object_Pool: {fileID: 109960160}
   ui_Manager: {fileID: 1653788838}
   next_Stage_Time:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
+  - 150
+  - 150
+  - 150
+  - 150
+  - 150
+  - 150
   upgradeLevels: 01000000010000000100000001000000
   upgradeValues:
   - 10
   - 10
   - 0.5
-  - 1
-  gameTime: 5
+  - 0.5
+  gameTime: 900
   killCount: 0
   isGameOver: 0
   isGameClear: 0

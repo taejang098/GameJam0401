@@ -38,9 +38,12 @@ public class GameManager : MonoBehaviour
 
 
     public float gameTime = 15 * 60;
+    [HideInInspector]
     public int killCount = 0;
 
+    [HideInInspector]
     public bool isGameOver = false;
+    [HideInInspector]
     public bool isGameClear = false;
     private void Awake()
     {

@@ -12,6 +12,16 @@ public class MainScene : MonoBehaviour
 
     void Start()
     {
+        InputManager.Instance.AddKeyDownEvent(KeyCode.Escape, () =>
+        {
+            if (PopupManager.Instance.GetLength() == 0)
+            {
+                Application.Quit();
+            }
+           
+        });
+
+
         SoundManager.Instance.Play(Define.AudioType.Bgm, "Bgm_Main");
 
         startBtn.onClick.AddListener(() =>

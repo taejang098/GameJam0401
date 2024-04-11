@@ -6,7 +6,7 @@ public class Define
 {
     public enum MonsterType
     {
-        Yakgwa, Strawberry, Imomochi, Hoppang, Jugsun, Tanghulu
+         Imomochi, Strawberry, Hoppang, Yakgwa, Tanghulu, Jugsun
     }
     public enum PopupType
     {
